@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+ <!-- partial -->
+ <div class="main-panel" style="width: 100%;">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title" id="table_name">Basic Table</h4>
+              <p class="card-description">
+                Add class <code>.table</code>
+              </p>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Profile</th>
+                      <th>VatNo.</th>
+                      <th>Created</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                {% for task in tasks %}
+                        <tr>
+                        <td>{{ task.content }}</td>
+                        <td>{{ task.date_created.date() }}</td>
+                        <td>12 May 2017</td>
+                        <td>
+                            <a href="/delete/{{task.id}}"><label class="badge badge-danger">Delete</label></a>
+                            <label class="badge badge-danger" onClick="tag(this);" prot="{{task.id}}">Update</label>
+                        </td>
+                        </tr>
+                {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Default form</h4>
+                <p class="card-description">
+                  Basic form layout
+                </p>
+                <form class="forms-sample" action="/" method="POST">
+                  <div class="form-group">
+                    <label for="content">Username</label>
+                    <input type="text" class="form-control" id="content"  name="content" placeholder="Username">
+                  </div>
+                  
+                  <button type="submit" class="btn btn-primary me-2">Submit</button>
+                  <button class="btn btn-light">Cancel</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Arijit Aich</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2022. All rights reserved.</span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+{% endblock %}
